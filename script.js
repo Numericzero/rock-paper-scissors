@@ -70,8 +70,25 @@ function playRound(humanChoice, computerChoice)
     }
 }
 
+function playGame()
+{
+    for(let i = 0; i < 5; i++)
+    {
+        let humanSelection = getHumanChoice().toLowerCase();
+        let computerSelection = getComputerChoice();
 
-let humanSelection = getHumanChoice().toLowerCase();
-let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
 
-playRound(humanSelection, computerSelection);
+    console.log("\nYour score: " + humanScore);
+    console.log("Computer score: " + computerScore);
+
+    if(humanScore > computerScore)
+        console.log("Winner: You")
+    else if(humanScore < computerScore)
+        console.log("Winner: Computer")
+    else
+        console.log("The game is tied.")
+}
+
+playGame()
