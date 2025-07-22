@@ -4,7 +4,7 @@ function getComputerChoice()
 {
     let choice = null;
 
-    let rng = (Math.random() * 1000) % 3;
+    let rng = Math.floor(Math.random() * 1000) % 3;
     
     switch(rng)
     {
