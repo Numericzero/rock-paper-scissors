@@ -22,12 +22,16 @@ function getComputerChoice()
     return choice;
 }
 
+let gameOver = false;
 let gameResult = null;
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice)
 {
+    if(gameOver)
+        return;
+
     if(humanChoice=="rock" & computerChoice=="scissors")
     {
         gameResult = "You win! Rock beats Scissors.";
@@ -63,10 +67,16 @@ function playRound(humanChoice, computerChoice)
         gameResult = "It's a tie!";
     }
 
-    if(humanScore >= 5)
+    if(humanScore == 5)
+    {
         gameResult = "Game Over! You win!";
-    else if(computerScore >= 5)
+        gameOver = true;
+    }
+    else if(computerScore == 5)
+    {
         gameResult = "Game Over! Computer wins!";
+        gameOver = true;
+    }
 
     let scoreboardComment = document.querySelector("#comments");
     scoreboardComment.innerText = gameResult;
